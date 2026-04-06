@@ -1,0 +1,14 @@
+{
+  "name": "risetrack",
+  "version": "1.0.0",
+  "description": "Projeto fullstack de metas e desafios",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.22.1"
+  }
+}
