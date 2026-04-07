@@ -7,9 +7,13 @@
 }
 
 body {
-    background: linear-gradient(135deg, #0f172a, #31425e);
+    background: radial-gradient(circle at top left, rgba (139, 92, 246, 0,18), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.18), transparent 25%),
+                radial-gradient(135deg, #020617, #0f172a 45%, 1e293b 100%);
     color: white;
     min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .navbar {
@@ -67,22 +71,34 @@ a {
     text-align: center;
     padding: 100px 20px;
     min-height: calc(100vh - 100px);
+    position: relative;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 850px;
+    padding: 50px 30px;
+    border: 1px solid rgba (255, 255, 255, 0.08);
+    background: rgba (255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.25);
 }
 
 .hero-content h2 {
     font-size: 3rem;
     margin-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.1;
+    font-weight: 800;
 }
 
 .hero-content p {
     font-size: 1.2rem;
     color: #cbd5e1;
     margin-bottom: 30px;
+    line-height: 1.8;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Sections gerais */
@@ -152,6 +168,12 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
+    padding: 50px;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.18);
 }
 
 .about-text {
@@ -162,6 +184,7 @@ a {
 .about-text h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .about-text p {
@@ -173,13 +196,23 @@ a {
 .about-image {
     flex: 1;
     min-width: 300px;
+    display: flex;
+    justify-content: center;
 }
 
 .about-image img {
     width: 100%;
     max-width: 500px;
-    border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    opacity: 0.92;
+    filter: saturate (1.05) contrast (1.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 30px 90px rgba(139, 92, 246, 0.18);
 }
 
 /* CTA FINAL */
