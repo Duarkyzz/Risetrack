@@ -1,1 +1,46 @@
-<!DOC
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Risetrack</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h1 class="logo">RiseTrack</h1>
+        <nav>
+            <a href="/views/index.html" class="btn-secondary">Voltar</a>
+            <a href="/views/register.html" class="btn-primary">Criar Conta</a>
+        </nav>
+    </header>
+
+    <main class="auth-page">
+        <section class="auth-card reveal active">
+            <div class="auth-header">
+                <h2>Bem-vindo de volta!</h2>
+                <p>Entre na sua conta e continue sua jornada.</p>
+            </div>
+
+            <form class="auth-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu email" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
+                </div>
+
+                <button type="submit" class="btn-primary auth-btn">Entrar</button>
+            </form>
+
+            <p class="auth-footer">
+                Ainda não possui uma conta?
+                <a href="/views/register.html">Criar agora</a>
+            </p>
+        </section>
+    </main>
+</html>
