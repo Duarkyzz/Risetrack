@@ -1,8 +1,20 @@
 const express = require("express");
+const fs = require("fs");
 const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+const usersFile = path.join(__dirname, "users.json");
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+// Garantir que users.json exista
+
+if (!fs.existsSync(usersFile)) {
+  fs.writeFileSync(usersFile, JSON.stringify([]));
+}
 
 // Servir arquivos estáticos (CSS, JS, imagens)
 app.use(express.static(path.join(__dirname, "public")));
@@ -27,3 +39,61 @@ app.get("/dashboard", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 })
+
+// Cadastro
+
+app.post("/register", (req, res ) => {
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    return res.status(400).json({ message: "Todos os campos são obrigatórios." });
+  }
+
+  const users = JSON.parse(fs.readFileSync(usersFile, "utf-8"));
+
+  const usersExists = users.find(user => user.email === email);
+
+  if (usersExists) {
+    return res.status(400).json({ message: "Email já cadastrado." });
+  }
+  
+  const newUser = {
+    id: Date.now(),
+    name,
+    email,
+    password
+  };
+
+  users.push(newUser);
+  fs.writeFileSync(usersFile, JSON.stringify(users));
+
+  res.status(201).json({ message: "Usuário cadastrado com sucesso." });
+});
+
+
+// Login
+
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+
+  const users = JSON.parse(fs.readFileSync(usersFile, "utf-8"));
+
+  const user = users.find(user => user.email === email && user.password === password);
+
+  if (user) {
+    return res.status(401).json({ message: "Email ou senha inválidos." });
+  }
+
+  res.status(200).json({
+    message: "Login bem-sucedido.",
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    }
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
