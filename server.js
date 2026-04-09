@@ -142,3 +142,36 @@ app.post("/login", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+// Reenviar código de verificação
+
+app.rost("/resend-code", (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ message: "Email é obrigatório." });
+  }
+
+  let users = JSON.parse(fs.readFileSync(usersFile, "utf-8"));
+
+  const user = users.find(user => user.email === email);
+
+  if (!user) {
+    return res.status(400).json({ message: "Usuário não encontrado." });
+  }
+
+  if (user.verified) {
+    return res.status(400).json({ message: "Email já verificado." });
+  }
+
+  const newCode = generateVerificationCode();
+  user.verificationCode = newCode;
+
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2), "utf-8");
+
+  console.log(`Novo código de verificação para ${email}: ${newCode}`);
+
+  return res.status(200).json({
+    message: "Novo código de verificação enviado! Verifique seu email."
+  });
+});
