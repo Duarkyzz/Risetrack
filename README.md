@@ -1,61 +1,100 @@
-# RiseTrack
+# 🚀 RiseTrack
 
-RiseTrack é um projeto fullstack em desenvolvimento com foco em **metas, constância e evolução pessoal**.
+**RiseTrack** é uma aplicação web fullstack em desenvolvimento com foco em **metas, constância, produtividade e evolução pessoal**.
 
-A ideia do sistema é permitir que usuários criem uma conta, acessem uma área privada e possam organizar seus objetivos de forma simples e visual.
+A proposta do sistema é oferecer uma plataforma onde usuários possam criar uma conta, acessar uma área privada e acompanhar seus objetivos de forma **simples, organizada e visualmente agradável**.
+
+O projeto está sendo desenvolvido com o objetivo de unir **aprendizado prático em desenvolvimento web** com a construção de uma ideia real de produto.
 
 ---
 
-## Sobre o projeto
+## 📌 Objetivo do projeto
 
-O RiseTrack está sendo desenvolvido como projeto de estudo com o objetivo de praticar conceitos de desenvolvimento web fullstack, incluindo:
+O RiseTrack nasceu como um projeto de estudo, mas está sendo pensado para evoluir além de um simples projeto de portfólio.
 
-- Estruturação de páginas
-- Estilização com CSS
+A ideia é desenvolver uma aplicação funcional que permita ao usuário:
+
+- criar e gerenciar metas
+- acompanhar progresso pessoal
+- manter constância em hábitos e tarefas
+- visualizar sua evolução ao longo do tempo
+
+Além disso, o projeto serve como prática de conceitos fundamentais de desenvolvimento **frontend + backend**, com foco em estrutura, autenticação e escalabilidade.
+
+---
+
+## 🧠 O que está sendo praticado no projeto
+
+Durante o desenvolvimento do RiseTrack, estão sendo aplicados conceitos como:
+
+- Estruturação semântica com HTML
+- Estilização moderna com CSS
+- Organização visual e experiência do usuário
 - Navegação entre páginas
+- Manipulação de eventos com JavaScript
 - Backend com Node.js e Express
-- Organização de projeto
-- Futuramente, integração com banco de dados
+- Estruturação de rotas
+- Integração entre frontend e backend
+- Planejamento de autenticação de usuários
+- Preparação para uso com banco de dados
 
 ---
 
-## Funcionalidades atuais
+## ✅ Funcionalidades atuais
 
-Atualmente o projeto conta com:
+Atualmente, o projeto já conta com:
 
 - Landing page inicial
-- Navegação para login e cadastro
-- Estrutura inicial do frontend
-- Estilização moderna com tema dark
-- Seções explicando a proposta do sistema
-- Animações visuais ao scroll
+- Navegação entre páginas
+- Página de login
+- Página de cadastro
+- Estrutura visual responsiva
+- Interface com tema dark
+- Layout moderno com foco em usabilidade
+- Backend inicial com Node.js + Express
+- Estrutura base para autenticação
+- Sistema em evolução para cadastro/login real
 
 ---
 
-## Funcionalidades planejadas
+## 🛠️ Funcionalidades em desenvolvimento
 
-As próximas etapas do projeto incluem:
+As próximas etapas do RiseTrack incluem:
 
-- Sistema de cadastro de usuários
-- Sistema de login
-- Integração com banco de dados
-- Criação de metas e objetivos
-- Área do usuário
-- Dashboard de progresso
+- [ ] Cadastro de usuários funcional
+- [ ] Login funcional
+- [ ] Verificação de e-mail
+- [ ] Persistência de autenticação
+- [ ] Logout de usuário
+- [ ] Integração com banco de dados
+- [ ] Área privada do usuário
+- [ ] Dashboard principal
+- [ ] Sistema de criação de metas
+- [ ] Sistema de acompanhamento de progresso
+- [ ] Organização de tarefas e objetivos
+- [ ] Futuramente: integração com IA para apoio ao usuário
 
 ---
 
-## Tecnologias utilizadas
+## 💻 Tecnologias utilizadas
 
+### Frontend
 - HTML5
 - CSS3
 - JavaScript
+
+### Backend
 - Node.js
 - Express.js
 
+### Futuras integrações
+- Banco de dados
+- Sistema de autenticação mais robusto
+- Integração com APIs e recursos inteligentes
+
 ---
 
-## Estrutura do projeto
+## 📁 Estrutura atual do projeto
 
 ```bash
 RiseTrack/
@@ -64,14 +103,19 @@ RiseTrack/
 │   ├── css/
 │   │   └── style.css
 │   ├── js/
-│   │   └── script.js
+│   │   ├── script.js
+│   │   ├── register.js
+│   │   ├── login.js
+│   │   └── verify-email.js
 │   └── images/
 │
 ├── views/
 │   ├── index.html
 │   ├── login.html
-│   └── register.html
+│   ├── register.html
+│   └── verify-email.html
 │
 ├── server.js
+├── users.json
 ├── package.json
 └── README.md
