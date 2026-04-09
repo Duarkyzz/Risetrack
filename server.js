@@ -7,13 +7,21 @@ const PORT = process.env.PORT || 3000;
 
 const usersFile = path.join(__dirname, "users.json");
 
+// Middleware para parsear JSON e dados de formulário
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Garantir que users.json exista
 
 if (!fs.existsSync(usersFile)) {
   fs.writeFileSync(usersFile, JSON.stringify([]));
+}
+
+// Função para gerar um ID único para cada usuário
+
+function generateVerificationCode() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
 }
 
 // Servir arquivos estáticos (CSS, JS, imagens)
@@ -56,20 +64,57 @@ app.post("/register", (req, res ) => {
   if (usersExists) {
     return res.status(400).json({ message: "Email já cadastrado." });
   }
+
+  const verificationCode = generateVerificationCode();
   
   const newUser = {
     id: Date.now(),
     name,
     email,
-    password
+    password,
+    verified: false,
+    verificationCode
   };
 
   users.push(newUser);
-  fs.writeFileSync(usersFile, JSON.stringify(users));
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2), "utf-8");
 
-  res.status(201).json({ message: "Usuário cadastrado com sucesso." });
+  console.log(`Código de verificação para ${email}: ${verificationCode}`);
+
+  res.status(201).json({ message: "Conta criada com sucesso!! Verifique seu e-mail." });
 });
 
+// Verificação de email
+
+app.post("/verify-email", (req, res) => {
+  const { email, code } = req.body;
+
+  let users = JSON.parse(fs.readFileSync(usersFile, "utf-8"));
+
+  const user = users.find(user => user.email === email);
+
+  if (!user) {
+    return res.status(400).json({ message: "Usuário não encontrado." });
+  }
+
+  if (user.verificationCode !== code) {
+    return res.status(400).json({ message: "Código de verificação inválido." });
+  }
+
+  user.verified = true;
+  user.verificationCode = null;
+
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2), "utf-8");
+
+  return res.status(200).json ({
+    message: "Email verificado com sucesso! Agora você pode fazer login.",
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    }
+  });
+});
 
 // Login
 

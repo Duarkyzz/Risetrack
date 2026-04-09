@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang= "pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Email | RiseTrack</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="/" class="logo">RiseTrack</a>
+        <nav>
+            <a href="/login" class="btn-secondary">Login</a>
+            <a href="/register" class="btn-primary">Criar Conta</a>
+        </nav>
+    </header>
+
+    <main class="auth-page">
+        <section class="auth-card reveal active">
+            <div class="auth-header">
+                <h2>Verifique seu e-mail</h2>
+                <p>Digite o código de verificação enviado para seu e-mail.</p>
+            </div>
+
+            <form class="auth-form" id="verifyForm">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu email" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="code">Código de Verificação</label>
+                    <input type="text" id="code" name="code" placeholder="Digite o código de verificação" required />
+                </div>
+
+                <button type="submit" class="btn-primary auth-btn">Verificar Conta</button>
+            </form>
+
+            <p class="auth-footer">
+                Já tem uma conta? <a href="/login">Faça login</a>
+            </p>
+
+            <p class="auth-footer">
+                Não recebeu o código? <a href="#" id="resendCodeLink">Reenviar código</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>
