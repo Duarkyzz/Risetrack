@@ -198,3 +198,11 @@ function readUsers() {
 function saveUsers(users) {
   fs.writeFileSync(usersFile, JSON.stringify(users, null, 2), "utf-8");
 }
+
+//Mongo 
+
+const mongoose = require("mongoose")
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB conectado"))
+  .catch(err => console.log("Erro ao conectar:", err))
