@@ -1,8 +1,17 @@
 const loginForm = document.getElementById('login-form');
+const loginMessage = document.getElementById("loginMessage")
+
+function showMessage(message, type){
+    if (!loginMessage) return;
+    loginMessage.textContent = message;
+    loginMessage.className = `form-message ${type}`;
+}
 
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        showMessage("", "");
     
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
@@ -21,14 +30,21 @@ if (loginForm) {
         if (response.ok) {
             alert(data.message);
             localStorage.setItem('loggedUser', JSON.stringify(data.user));
-            window.location.href = '/dashboard';
-        
+
+            setTimeout(() => {
+                window.location.hef = "/dashboard";
+            }, 1000)
+
         } else {
-            alert(data.message);
+            showMessage(data.message, "error");
         }
+            
     } catch (error) {
         console.error('Erro ao fazer login:', error);
         alert('Ocorreu um erro ao tentar fazer login. Por favor, tente novamente mais tarde.');
     }
     });
+
+} else {
+    console.error("Formulário de login não encontrado");
 }
