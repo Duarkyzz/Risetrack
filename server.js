@@ -129,7 +129,7 @@ app.post("/login", (req, res) => {
 
   const user = users.find(user => user.email === email && user.password === password);
 
-  if (user) {
+  if (!user) {
     return res.status(401).json({ message: "Email ou senha inválidos." });
   }
 
@@ -164,7 +164,7 @@ app.post("/resend-code", (req, res) => {
     return res.status(400).json({ message: "Usuário não encontrado." });
   }
 
-  if (user.verified) {
+  if (!user.verified) {
     return res.status(400).json({ message: "Email já verificado." });
   }
 
@@ -179,3 +179,22 @@ app.post("/resend-code", (req, res) => {
     message: "Novo código de verificação enviado! Verifique seu email."
   });
 });
+
+function readUsers() {
+  try {
+    const data = fs.readFileSync(usersFile, "utf-8");
+
+    if (!data) {
+      return [];
+    }
+
+    return JSON.parse(data);
+  } catch (err) {
+    console.error("Erro ao ler usuários:", err);
+    return [];
+  }
+}
+
+function saveUsers(users) {
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2), "utf-8");
+}

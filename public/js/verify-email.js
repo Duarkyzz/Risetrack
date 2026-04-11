@@ -6,8 +6,8 @@ console.log("Script de verificação de email carregado.");
 const pendingEmail = localStorage.getItem("pendingEmail");
 const emailInput = document.getElementById("email");
 
-if (pedingEmail && emailInput) {
-    emailInput.value = pedingEmail;
+if (pendingEmail && emailInput) {
+    emailInput.value = pendingEmail;
 }
 
 if (verifyForm) {
@@ -31,9 +31,9 @@ if (verifyForm) {
                     alert(data.message);
 
                     if (response.ok) {
-                        localStorage.removeItem("loggedUser", JSON.stringify(data.user));
+                        localStorage.setItem("loggedUser", JSON.stringify(data.user));
                         localStorage.removeItem("pendingEmail");
-                        window.location.href = "/";
+                        window.location.href = "/dashboard";
                     }
                 } catch (error) {
                     console.error("Erro ao verificar email:", error);

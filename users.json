@@ -1,32 +1,10 @@
 [
   {
-    "id": 1775645589403,
-    "name": "Edu",
-    "email": "duduzinho@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 1775908833597,
+    "id": 1775915949005,
     "name": "Eduardo Queiroz",
     "email": "eduardoqueirozcarvalho978@gmail.com",
-    "password": "Dudz0099@",
-    "verified": false,
-    "verificationCode": "837177"
-  },
-  {
-    "id": 1775910788018,
-    "name": "Edduardo",
-    "email": "adasda@gmail.com",
-    "password": "12345",
-    "verified": false,
-    "verificationCode": "817911"
-  },
-  {
-    "id": 1775911691146,
-    "name": "jorginho",
-    "email": "van.madonna1982@gmail.com",
-    "password": "asdasd",
-    "verified": false,
-    "verificationCode": "511240"
+    "password": "123123",
+    "verified": true,
+    "verificationCode": null
   }
 ]

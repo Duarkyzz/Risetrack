@@ -31,6 +31,7 @@ if (registerForm) {
             alert(data.message);
 
             if (response.ok) {
+                localStorage.setItem("pendingEmail", email);
                 window.location.href = "/verify-email";
             }
 

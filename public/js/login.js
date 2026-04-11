@@ -1,7 +1,8 @@
-const logiForm = document.getElementById('login-form');
+const loginForm = document.getElementById('login-form');
 
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
     
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
@@ -20,7 +21,7 @@ loginForm.addEventListener('submit', async (e) => {
         if (response.ok) {
             alert(data.message);
             localStorage.setItem('user', JSON.stringify(data.user));
-            window.location.href = '/';
+            window.location.href = '/dashboard';
         
         } else {
             alert(data.message);
@@ -29,5 +30,5 @@ loginForm.addEventListener('submit', async (e) => {
         console.error('Erro ao fazer login:', error);
         alert('Ocorreu um erro ao tentar fazer login. Por favor, tente novamente mais tarde.');
     }
-    
-});
+    });
+}
