@@ -414,3 +414,24 @@ h1, h2, h3, h4, h5, p, a, button, label, span {
     user-select: none;
 }
 
+.form-message {
+    margin-top: 12px;
+    font-size: 14px;
+    text-align: center;
+    min-height: 20px;
+}
+
+.form-message.error{
+    color: #f87171;
+}
+
+.form-message.success {
+    color: #51cf66;
+}
+
+.input-message {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #ff6b6b;
+    min-height: 18px;
+}

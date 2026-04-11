@@ -20,7 +20,7 @@ if (loginForm) {
 
         if (response.ok) {
             alert(data.message);
-            localStorage.setItem('user', JSON.stringify(data.user));
+            localStorage.setItem('loggedUser', JSON.stringify(data.user));
             window.location.href = '/dashboard';
         
         } else {

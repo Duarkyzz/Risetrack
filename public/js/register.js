@@ -3,17 +3,26 @@ const registerForm = document.getElementById("registerForm");
 console.log("register.js carregado");
 console.log("Form encontrado:", registerForm);
 
+function showMessage(message, type) {
+    registerMessage.textContent = message;
+    registerMessage.className = `form-message ${type}`;
+}
+
 if (registerForm) {
     registerForm.addEventListener("submit", async (e) => {
         e.preventDefault();
+
+        showMessage("", "");
 
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("confirm-password").value;
 
+        confirmPasswordError.textContent = "";
+
         if (password !== confirmPassword) {
-            alert("As senhas não coincidem.");
+            confirmPasswordError.textContent = "As senhas não coincidem.";
             return;
         }
 
@@ -28,11 +37,17 @@ if (registerForm) {
 
             const data = await response.json();
 
-            alert(data.message);
-
             if (response.ok) {
                 localStorage.setItem("pendingEmail", email);
                 window.location.href = "/verify-email";
+
+                setTimeout(() => {
+                    window.location.href = "/verify-email";
+                }, 1000);
+            
+            } else {
+                showMessage(data.message, "error");
+            
             }
 
         } catch (error) {

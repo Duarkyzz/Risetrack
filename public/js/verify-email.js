@@ -27,7 +27,7 @@ if (verifyForm) {
                     });
         
                     const data = await response.json();
-
+                    
                     alert(data.message);
 
                     if (response.ok) {
