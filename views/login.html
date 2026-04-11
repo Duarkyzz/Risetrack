@@ -9,7 +9,7 @@
 <body>
 
     <header class="navbar">
-        <h1 class="logo">RiseTrack</h1>
+        <a href="/" class="logo">RiseTrack</h1>
         <nav>
             <a href="/" class="btn-secondary">Voltar</a>
             <a href="/register" class="btn-primary">Criar Conta</a>
@@ -23,7 +23,7 @@
                 <p>Entre na sua conta e continue sua jornada.</p>
             </div>
 
-            <form class="auth-form">
+            <form class="auth-form" id="login-form">
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Digite seu email" required />
@@ -32,9 +32,9 @@
                 <div class="input-group">
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
-                    <p id="loginMessage" class="form-message"></p>
                 </div>
 
+                <p id="loginMessage" class="form-message"></p>
                 <button type="submit" class="btn-primary auth-btn">Entrar</button>
             </form>
 

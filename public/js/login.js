@@ -28,11 +28,10 @@ if (loginForm) {
         const data = await response.json();
 
         if (response.ok) {
-            alert(data.message);
             localStorage.setItem('loggedUser', JSON.stringify(data.user));
 
             setTimeout(() => {
-                window.location.hef = "/dashboard";
+                window.location.href = "/dashboard";
             }, 1000)
 
         } else {

@@ -26,6 +26,23 @@ if (registerForm) {
             return;
         }
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+        if (!emailRegex.test(email)) {
+            showMessage("Digite um email válido.", "error");
+            return;
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{8,}$/;
+
+        if (!passwordRegex.test(password)) {
+            showMessage(
+                "A senha precisa ter no mínimo 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.",
+                "error"
+            );
+            return;
+        }
+
         try {
             const response = await fetch("/register", {
                 method: "POST",
