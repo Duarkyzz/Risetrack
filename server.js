@@ -1,6 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const enviarCodigo = require("./mailer");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -44,13 +46,13 @@ app.get("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "dashboard.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
-})
+app.get("/verify-email", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "verify-email.html"));
+});
 
 // Cadastro
 
-app.post("/register", (req, res ) => {
+app.post("/register", async (req, res ) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -78,6 +80,8 @@ app.post("/register", (req, res ) => {
 
   users.push(newUser);
   fs.writeFileSync(usersFile, JSON.stringify(users, null, 2), "utf-8");
+
+  await enviarCodigo(email, verificationCode);
 
   console.log(`Código de verificação para ${email}: ${verificationCode}`);
 
@@ -145,7 +149,7 @@ app.listen(PORT, () => {
 
 // Reenviar código de verificação
 
-app.rost("/resend-code", (req, res) => {
+app.post("/resend-code", (req, res) => {
   const { email } = req.body;
 
   if (!email) {

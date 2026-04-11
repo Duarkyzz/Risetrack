@@ -31,7 +31,7 @@ if (registerForm) {
             alert(data.message);
 
             if (response.ok) {
-                window.location.href = "/login";
+                window.location.href = "/verify-email";
             }
 
         } catch (error) {
