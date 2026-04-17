@@ -94,28 +94,7 @@ As próximas etapas do RiseTrack incluem:
 
 ---
 
-## 📁 Estrutura atual do projeto
+## AVISO IMPORTANTE
 
-```bash
-RiseTrack/
-│
-├── public/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   ├── script.js
-│   │   ├── register.js
-│   │   ├── login.js
-│   │   └── verify-email.js
-│   └── images/
-│
-├── views/
-│   ├── index.html
-│   ├── login.html
-│   ├── register.html
-│   └── verify-email.html
-│
-├── server.js
-├── users.json
-├── package.json
-└── README.md
+O projeto vai passar por um tempo parado, por conta que estou aprimorando alguns quesitos para que o site possa entregar o maximo dele, por enquanto não possuo uma data pra voltar o projeto, vai ficar em um prazo inderteminado até que eu consiga me sentir confortável novamente a continuar o projeto, obrigado a todos <3
+
